@@ -18,10 +18,10 @@
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
     	<input type="text" name="LotArea" placeholder="Lot size in square feet" required="required" />
-        <input type="text" name="MiscVal" placeholder="MiscVal" required="required" />
-	<input type="text" name="2ndFlrSF" placeholder="2ndFlrSF" required="required" />
-	<input type="text" name="BsmtFinSF1" placeholder="BsmtFinSF1" required="required" />
-	<input type="text" name="PoolArea" placeholder="PoolArea" required="required" />
+        <input type="text" name="MiscVal" placeholder="$Value of miscellaneous feature" required="required" />
+	<input type="text" name="2ndFlrSF" placeholder="Second floor square feet" required="required" />
+	<input type="text" name="BsmtFinSF1" placeholder="Type 1 finished square feet" required="required" />
+	<input type="text" name="PoolArea" placeholder="Pool area in square feet" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
