@@ -1,23 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[24]:
-
 
 import pandas as pd
 import numpy as np
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
-
 from sklearn import metrics
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.linear_model import LinearRegression
-
 import pickle
-
-
-# In[25]:
-
 
 def SelectTopN(df, N):
     df = df.select_dtypes(include=['float64', 'int64'])
@@ -35,8 +24,6 @@ def SelectTopN(df, N):
     return featureScores.nlargest(N,'Score')
 
 
-# In[26]:
-
 
 def linear_model(X_train, y_train, X_test, y_test):
     clf1 = LinearRegression()
@@ -48,19 +35,15 @@ def linear_model(X_train, y_train, X_test, y_test):
     return linear_model_predictions, RMSE
 
 
-# In[35]:
-
-
 def get_prediction(arr, model):
+    #Making the arrray 2D
     arr2D = [arr]
     return model.predict(arr2D)
 
 
-# In[36]:
-
-
 def main():
-
+    
+    #Loading the dataset
     train = pd.read_csv('train.csv')
     #test = pd.read_csv('test.csv')
     print('\n***********************************')
@@ -88,30 +71,19 @@ def main():
     #print('Test dataset shape after selecting top variables: ',test.shape)
     
     
-    #
+    #Splitting the dataset in train and test 
     print('\n*********************************************\n')
     X_train, X_test, y_train, y_test = train_test_split(train.drop(['SalePrice'], axis=1), train[['SalePrice']].astype(int), 
                                                         test_size=0.2, random_state=0)
     
-    print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
-    predictions, RMSE = linear_model(X_train, y_train, X_test, y_test)
+    print('Train and test dataset shape: ',X_train.shape, X_test.shape, y_train.shape, y_test.shape)
     
+    #Calling the Linear Regression model
+    predictions, RMSE = linear_model(X_train, y_train, X_test, y_test)
     print('Model RMSE: ',RMSE)
     
+    #Testing the dowanloaded model
     print(get_prediction([11622, 400, 800, 750, 300], pickle.load(open('model.pkl', 'rb'))))
     
 if __name__ == '__main__':
     main()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
