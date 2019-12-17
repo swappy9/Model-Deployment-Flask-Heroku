@@ -1,2 +1,5 @@
 # Basic-Heroku-Deployment
-ML model deployment on local system using Heroku and Flask
+
+The repository is created to showcase the steps involved in the basic deployment of machine learning models using the Heroku and flask.
+
+
