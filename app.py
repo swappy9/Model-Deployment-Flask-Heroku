@@ -47,9 +47,3 @@ def predict():
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-# In[8]:
-
-
-get_ipython().run_line_magic('tb', '')
-
