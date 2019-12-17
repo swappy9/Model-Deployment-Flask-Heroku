@@ -18,7 +18,7 @@ def predict():
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
 
-    output = prediction[0][0]
+    output = round(prediction[0][0], 2)
 
     return render_template('index.html', prediction_text='Predicted House Price is $ {}'.format(output))
 
